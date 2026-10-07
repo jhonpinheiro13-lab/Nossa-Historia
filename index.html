@@ -639,6 +639,19 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
 .snlist li.on b{color:var(--sun)}
 .snlist small{font-variant-numeric:tabular-nums;opacity:.6;font-size:12px}
 .snnote{font-size:12px;opacity:.7}
+.ynodate{margin:-8px 0 22px}.ynodate .ndh{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}.ynodate h3{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-family:var(--ui);font-weight:700;color:var(--ink-2)}
+.ndlist{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}.ndlist:empty{display:none}
+body.ro .ynodate.none{display:none}
+.field .nodate{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;letter-spacing:.08em}.field .nodate input{width:auto;margin:0}
+.drvbtn{width:100%;margin-top:8px;justify-content:center}
+.day.dropon,#shellAno.dropon{outline:3px dashed var(--sun);outline-offset:-10px;background:color-mix(in srgb,var(--sun) 7%,transparent)}
+.filepick.dropon{background:color-mix(in srgb,var(--sun) 10%,transparent)}
+.dropmsg{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:90;background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;pointer-events:none}
+.cfgsec{border-top:1px solid var(--line);padding-top:14px;margin-top:6px}.cfgsec h3{font-size:20px;margin:0 0 8px}.cfgsec .hint{margin:0 0 12px}
+.cfgtabs{display:grid;gap:10px}.cfgtab{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:8px;background:var(--white)}.cfgtab b{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sun)}
+.cfgtab .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cfgtab .field{margin:0}@media(max-width:520px){.cfgtab .row{grid-template-columns:1fr}}
+.fontprev{border:1px dashed var(--line);border-radius:12px;padding:12px 14px;margin:0;display:grid;gap:4px}.fontprev b{font-family:var(--head);font-weight:600;font-size:26px}
+html.fs-sm{zoom:.92}html.fs-lg{zoom:1.1}html.fs-xl{zoom:1.22}
 /* sugestões de álbuns */
 .asugwrap{margin-bottom:22px}
 .asug{display:flex;gap:12px;overflow-x:auto;padding:10px 2px 6px;scroll-snap-type:x mandatory}
@@ -703,14 +716,14 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
 <div class="ronote2">Modo visualização · para editar, conecte a chave em Nuvem</div>
 <div class="shell" id="shell">
   <div class="wrap">
-    <div class="sbrand">Nossas <i>memórias</i></div>
+    <div class="sbrand" id="cfgBrand">Nossas <i>memórias</i></div>
     <div class="stabs" id="stabs">
       <button type="button" data-sv="ano" class="on">Nosso ano</button>
       <button type="button" data-sv="viagens">Viagens</button>
       <button type="button" data-sv="albuns">Álbuns</button>
       <button type="button" data-sv="musicas">Músicas</button>
     </div>
-    <button type="button" class="scolors" id="btnColors" title="Configurações"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.3"/><circle cx="12" cy="7.5" r="1.3"/><circle cx="15.5" cy="10" r="1.3"/><path d="M12 21a3 3 0 0 1 0-6h2"/></svg></button>
+    <button type="button" class="scolors" id="btnColors" title="Configurações" aria-label="Configurações"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
     <button type="button" class="scolors" id="btnCloud2" title="Nuvem"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4 4 0 0 1 0 9z"/></svg></button>
     <button type="button" class="presenca-btn ed" id="btnPresenca"><svg viewBox="0 0 24 24"><path d="M12 22s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg><span class="lg">Marcar </span>presença</button>
   </div>
@@ -723,10 +736,11 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
 <section class="sview" id="shellAno">
   <div class="wrap">
     <div class="shead">
-      <div><div class="eyebrow">Parte 1 · como foi o ano</div><h2>Nosso <i>ano</i> <select class="yselect" id="ySelect" aria-label="Ano"></select></h2></div>
+      <div><div class="eyebrow" id="eyeAno">Parte 1 · como foi o ano</div><h2><span id="ttlAno">Nosso <i>ano</i></span> <select class="yselect" id="ySelect" aria-label="Ano"></select></h2></div>
       <div class="acts">
         <button type="button" class="pill ed" id="yAddMoment">+ Momento</button>
         <button type="button" class="pill ed" id="yAddPhotos">Adicionar fotos</button>
+        <button type="button" class="pill ed" id="yAddDrive" title="Escolher fotos direto do Google Drive"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;vertical-align:-2px;margin-right:4px"><path d="M8 3h8l6 10-4 7H6l-4-7z"/><path d="M8 3l6 10h8M16 3 6 20M2 13h12"/></svg>Do Drive</button>
         <button type="button" class="pill ed" id="ySelectMode">Selecionar</button>
       </div>
     </div>
@@ -734,6 +748,10 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
     <div class="tray" id="yTray" data-drop="inbox">
       <h3>Sem data <span id="yTrayN"></span></h3>
       <div class="row" id="yTrayRow"></div>
+    </div>
+    <div class="ynodate" id="yNoDate">
+      <div class="ndh"><h3>Eventos sem data <span id="yNoDateN"></span></h3><button type="button" class="pill ed" id="yAddNoDate">+ Evento sem data</button></div>
+      <div class="ndlist" id="yNoDateList"></div>
     </div>
     <p class="yhint ed">Arraste uma foto para qualquer dia, mês ou para "Sem data". No celular, segure a foto meio segundo e arraste. Toque na foto para mudar a data, a hora ou a legenda.</p>
     <div id="yTimeline"></div>
@@ -745,7 +763,7 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
 <section class="sview" id="shellViagens" hidden>
   <div class="wrap">
     <div class="shead">
-      <div><div class="eyebrow">Parte 2 · experiências</div><h2>Nossas <i>viagens</i></h2></div>
+      <div><div class="eyebrow" id="eyeViagens">Parte 2 · experiências</div><h2 id="ttlViagens">Nossas <i>viagens</i></h2></div>
     </div>
     <div class="tcards" id="tCards"></div>
     <div class="minilist" id="tTrash"></div>
@@ -755,7 +773,7 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
 <!-- PARTE 3: álbuns -->
 <section class="sview" id="shellAlbuns" hidden>
   <div class="wrap">
-    <div class="shead"><div><div class="eyebrow">Parte 3 · álbuns</div><h2>Nossos <i>álbuns</i></h2></div></div>
+    <div class="shead"><div><div class="eyebrow" id="eyeAlbuns">Parte 3 · álbuns</div><h2 id="ttlAlbuns">Nossos <i>álbuns</i></h2></div></div>
     <div class="asugwrap" id="abSugWrap" hidden><div class="eyebrow">Sugestões a partir das datas das fotos</div><div class="asug" id="abSug"></div></div>
     <div class="abuild">
       <h3 id="abTitle">Montar álbum</h3>
@@ -792,7 +810,7 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
 <section class="sview" id="shellMusicas" hidden>
   <div class="wrap">
     <div class="shead">
-      <div><div class="eyebrow">Trilha sonora</div><h2>Nossas <i>músicas</i></h2></div>
+      <div><div class="eyebrow" id="eyeMusicas">Trilha sonora</div><h2 id="ttlMusicas">Nossas <i>músicas</i></h2></div>
       <div class="acts"><button type="button" class="pill ed" id="sgAdd">+ Músicas</button><button type="button" class="pill sun" id="sgPlayAll">Tocar tudo</button></div>
     </div>
     <p class="yhint ed">Envie os arquivos de áudio (o MP3 baixado do Suno, por exemplo). Em "Editar" você cola a letra. A ordem da lista é a ordem da playlist.</p>
@@ -859,7 +877,7 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
     <div class="grab"></div>
     <h2 id="momTitle">Novo momento</h2>
     <div class="row3">
-      <div class="field"><label for="moDate">Data</label><input type="date" id="moDate" required></div>
+      <div class="field"><label for="moDate">Data</label><input type="date" id="moDate" required><label class="nodate"><input type="checkbox" id="moNoDate"> Sem data</label></div>
       <div class="field"><label for="moTime">Hora</label><input type="time" id="moTime"></div>
       <div class="field"></div>
     </div>
@@ -1092,6 +1110,7 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
     <div class="field">
       <span class="lbl">Fotos e vídeos</span>
       <div class="filepick"><span id="pickLabel">Escolher fotos ou vídeos</span><input type="file" id="fFiles" accept="image/*,video/*" multiple aria-label="Escolher fotos ou vídeos"></div>
+      <button type="button" class="btn drvbtn" id="fDriveBtn"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;vertical-align:-2px;margin-right:6px"><path d="M8 3h8l6 10-4 7H6l-4-7z"/><path d="M8 3l6 10h8M16 3 6 20M2 13h12"/></svg>Escolher do Google Drive</button>
       <div class="previews" id="previews"></div>
       <div class="hint">Pode escolher várias de uma vez. Fotos são reduzidas para caber no álbum. Para vídeos longos, use um link.</div>
     </div>
@@ -1222,6 +1241,7 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
     <div class="field">
       <span class="lbl">Fotos do dia (além das fotos de cada programação)</span>
       <div class="filepick"><span id="dPickLabel">Escolher fotos</span><input type="file" id="dFiles" accept="image/*" multiple aria-label="Fotos do dia"></div>
+      <button type="button" class="btn drvbtn" id="dDriveBtn"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;vertical-align:-2px;margin-right:6px"><path d="M8 3h8l6 10-4 7H6l-4-7z"/><path d="M8 3l6 10h8M16 3 6 20M2 13h12"/></svg>Escolher do Google Drive</button>
       <div class="previews" id="dPreviews"></div>
     </div>
     <div class="statusline" id="dayStatus"></div>
@@ -1259,11 +1279,31 @@ body:has(.selbar:not([hidden])) .mplayer{display:none}
   <div class="panel">
     <div class="grab"></div>
     <h2>Configurações</h2>
+    <div class="cfgsec ed">
+      <h3>Nomes e textos</h3>
+      <p class="hint">A última palavra de cada título fica em itálico. Deixe em branco para usar o texto padrão.</p>
+      <div class="field"><label for="cfBrand">Nome do site</label><input type="text" id="cfBrand" maxlength="40" placeholder="Nossas memórias"></div>
+      <div class="cfgtabs" id="cfTabs"></div>
+    </div>
+    <div class="cfgsec ed">
+      <h3>Fontes</h3>
+      <div class="field"><label for="cfFontHead">Fonte dos títulos</label><select id="cfFontHead"></select></div>
+      <div class="field"><label for="cfFontUi">Fonte dos textos</label><select id="cfFontUi"></select></div>
+      <div class="field"><label for="cfSize">Tamanho do texto</label><select id="cfSize"><option value="">Normal</option><option value="sm">Pequeno</option><option value="lg">Grande</option><option value="xl">Muito grande</option></select></div>
+      <p class="fontprev" id="cfPrev"><b>Nossas <i>viagens</i></b><span>O texto do site fica assim.</span></p>
+    </div>
+    <div class="cfgsec ed">
+      <h3>Google Drive</h3>
+      <p class="hint">Para o botão "Do Drive" funcionar, cole aqui as duas chaves do Google Cloud. Elas valem para este site em todos os aparelhos.</p>
+      <div class="field"><label for="cfGKey">Chave de API (API key)</label><input type="text" id="cfGKey" autocomplete="off" spellcheck="false" placeholder="AIza..."></div>
+      <div class="field"><label for="cfGClient">ID do cliente OAuth (Client ID)</label><input type="text" id="cfGClient" autocomplete="off" spellcheck="false" placeholder="123...apps.googleusercontent.com"></div>
+    </div>
+    <div class="cfgsec"><h3>Aparência</h3></div>
     <div class="field"><span class="lbl">Cores (site e álbum)</span><div class="swatches" id="themeStyles"></div></div>
     <div class="field"><span class="lbl">Carrinho do mapa</span><div class="carcfg"><img id="carPrev" alt="Carrinho"><div><p class="hint" style="margin:0 0 8px">Aparece no mapa da viagem, no dia em que vocês estão e no álbum em PDF. Use uma imagem PNG com fundo transparente para ficar melhor.</p><div class="carbtns ed"><label class="btn" for="carFile">Anexar imagem</label><input type="file" id="carFile" accept="image/*" hidden><button type="button" class="btn" id="carReset">Usar o padrão</button></div></div></div></div>
     <div class="field"><span class="lbl">Mosaico das fotos de cada dia (na página)</span><div class="styles" id="collageStyles"></div></div>
     <div class="field"><span class="lbl">Modelo do álbum em PDF</span><div class="styles" id="albumStyles"></div></div>
-    <div class="actions"><button type="button" class="btn primary" id="btnCloseStyle">Pronto</button></div>
+    <div class="actions"><button type="button" class="btn ed" id="cfReset">Voltar ao padrão</button><button type="button" class="btn primary" id="btnCloseStyle">Pronto</button></div>
   </div>
 </div>
 
@@ -1903,11 +1943,11 @@ const cloud = {
   api(path, opts) { return fetch(`https://api.github.com/repos/${this.owner}/${this.repo}/contents/${path}`, { ...opts, headers: { Authorization: 'Bearer ' + this.token, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', ...(opts && opts.headers || {}) } }); },
   async getSha(path) { const r = await this.api(path + '?ref=main', { cache: 'no-store' }); if (r.status === 404) return null; if (!r.ok) throw new Error('GitHub ' + r.status); const j = await r.json(); this.sha[path] = j.sha; return j.sha; },
   async put(path, b64, msg) {
-    const attempt = async () => { let sha = this.sha[path]; if (sha === undefined) sha = await this.getSha(path); const r = await this.api(path, { method: 'PUT', body: JSON.stringify({ message: msg, content: b64, branch: 'main', ...(sha ? { sha } : {}) }) }); if (r.status === 409 || r.status === 422) { delete this.sha[path]; return false; } if (!r.ok) throw new Error('GitHub ' + r.status); const j = await r.json(); this.sha[path] = j.content && j.content.sha; return true; };
+    const attempt = async () => { let sha = this.sha[path]; if (sha === undefined) sha = await this.getSha(path); const r = await this.api(path, { method: 'PUT', body: JSON.stringify({ message: msg, content: b64, branch: 'main', ...(sha ? { sha } : {}) }) }); if (r.status === 409 || r.status === 422) { delete this.sha[path]; return false; } if (!r.ok) { let det = ''; try { det = (await r.json()).message || ''; } catch (e) {} throw new Error('GitHub ' + r.status + (det ? ' (' + det + ')' : '')); } const j = await r.json(); this.sha[path] = j.content && j.content.sha; return true; };
     if (!(await attempt())) { if (!(await attempt())) throw new Error('conflito ao gravar ' + path); }
   },
   async remove(path) { let sha = this.sha[path]; if (sha === undefined) sha = await this.getSha(path); if (!sha) return; const r = await this.api(path, { method: 'DELETE', body: JSON.stringify({ message: 'remove ' + path, sha, branch: 'main' }) }); if (r.ok) delete this.sha[path]; },
-  errText(e) { const m = String((e && e.message) || e); if (/401/.test(m)) return 'a chave é inválida ou venceu. Gere outra e cole em Nuvem'; if (/403/.test(m)) return 'a chave não tem permissão de escrita. No GitHub, deixe Contents como Read and write'; if (/404/.test(m)) return 'a chave não tem acesso a este repositório. No GitHub, marque o repositório ' + this.repo + ' na chave'; if (/413|422/.test(m)) return 'arquivo grande demais para o GitHub'; if (/fetch|network|Failed/i.test(m)) return 'sem internet no momento'; return m; },
+  errText(e) { const m = String((e && e.message) || e); if (/401/.test(m)) return 'a chave é inválida ou venceu. Gere outra e cole em Nuvem'; if (/403/.test(m)) { const det = (m.match(/\((.*)\)/) || [])[1] || ''; if (/approv|organization|forbids|SAML/i.test(det)) return 'a organização do GitHub precisa aprovar esta chave (' + det + ')'; return 'a chave não tem permissão de escrita. No GitHub, deixe Contents como Read and write' + (det ? '. Resposta do GitHub: ' + det : ''); } if (/404/.test(m)) return 'a chave não tem acesso a este repositório. No GitHub, marque o repositório ' + this.repo + ' na chave'; if (/413|422/.test(m)) return 'arquivo grande demais para o GitHub'; if (/fetch|network|Failed/i.test(m)) return 'sem internet no momento'; return m; },
   enqueue(label, fn) { this.setStatus('busy', 'Enviando: ' + label); this.q = this.q.then(fn).then(() => { this.lastErr = ''; this.setStatus('ok', 'Sincronizado ' + fmtWhen(Date.now())); }).catch(e => { console.error(e); const t = this.errText(e); this.lastErr = t; this.setStatus('err', 'Erro ao enviar ' + label + ': ' + t); if (this.errShown !== t) { this.errShown = t; toast('Nuvem: não salvou, ' + t); } }); return this.q; },
   canWrite() { return this.on && !!this.token; },
   scheduleData() { if (!this.canWrite()) return; clearTimeout(this.timer); this.timer = setTimeout(() => this.pushData(), 2500); },
@@ -2308,6 +2348,7 @@ function normLib() {
   LIB.moments = LIB.moments || []; LIB.inbox = LIB.inbox || []; LIB.trips = LIB.trips || []; LIB.albums = LIB.albums || []; LIB.songs = LIB.songs || []; LIB.playlists = LIB.playlists || []; LIB.abDismiss = LIB.abDismiss || []; LIB.trash = LIB.trash || []; LIB.theme = LIB.theme || 'offwhite'; LIB.mext = LIB.mext || {}; LIB.year = LIB.year || new Date().getFullYear();
   for (const t of LIB.trips) { Object.assign(LIB.mext, t.mext || {}); t.id = t.id || 't' + uid(); t.expenses = t.expenses || []; t.trash = t.trash || []; t.mext = t.mext || {}; for (const d of t.days) { d.media = d.media || []; d.links = d.links || []; d.items = d.items || []; } }
   CAR = LIB.carImg || CAR_BASE;
+  try { applyCfg(); } catch (e) {}
 }
 
 /* ---------- navegação da casca ---------- */
@@ -2344,7 +2385,7 @@ $('carFile').onchange = async e => {
   } catch (x) { toast('Não consegui abrir essa imagem'); }
 };
 $('carReset').onclick = () => { delete LIB.carImg; save(); carRefresh(); toast('Carrinho padrão de volta'); };
-$('btnColors').onclick = () => { renderStyles(); renderCarCfg(); const inTrip = !$('tripApp').hidden; $('collageStyles').closest('.field').hidden = !inTrip; $('albumStyles').closest('.field').hidden = !inTrip; openSheet('sheetStyle'); };
+$('btnColors').onclick = () => { renderStyles(); renderCarCfg(); renderCfg(); const inTrip = !$('tripApp').hidden; $('collageStyles').closest('.field').hidden = !inTrip; $('albumStyles').closest('.field').hidden = !inTrip; openSheet('sheetStyle'); };
 $('btnStyle').onclick = () => { renderStyles(); renderCarCfg(); $('collageStyles').closest('.field').hidden = false; $('albumStyles').closest('.field').hidden = false; openSheet('sheetStyle'); };
 $('btnCloseStyle').addEventListener('click', () => { if (shell.view === 'albuns' && $('tripApp').hidden) renderAlbums(); });
 
@@ -2409,7 +2450,7 @@ function tripBlock(t, d) {
 function momCard(mo) {
   const imgs = mo.media.filter(isImg);
   return `<article class="ymom${mo.presence ? ' presence' : ''}" data-drop="mom|${mo.id}">
-    <div class="top"><b>${esc(mo.title || 'Fotos do dia')}</b>${mo.time ? `<span class="t">${esc(mo.time)}</span>` : ''}${mo.presence ? '<span class="tag">Presença</span>' : ''}${mo.example ? '<span class="tag">Exemplo</span>' : ''}</div>
+    <div class="top"><b>${esc(mo.title || (mo.date ? 'Fotos do dia' : 'Evento sem data'))}</b>${mo.time ? `<span class="t">${esc(mo.time)}</span>` : ''}${mo.presence ? '<span class="tag">Presença</span>' : ''}${mo.example ? '<span class="tag">Exemplo</span>' : ''}</div>
     ${mo.place && mo.place.label ? `<a class="yplace" href="${esc(mapsUrl(mo.place))}" target="_blank" rel="noopener">${ICON_PIN}${esc(mo.place.label)}</a>` : ''}
     ${imgs.length ? `<div class="ph">${imgs.map(m => phHtml(`m|${mo.id}|${m.id}`, m)).join('')}</div>` : ''}
     ${mo.text ? `<p class="txt">${esc(mo.text)}</p>` : ''}
@@ -2423,6 +2464,9 @@ function renderYear() {
   $('yStats').innerHTML = [[nMom, nMom === 1 ? 'momento' : 'momentos'], [nPh, 'fotos'], [places.size, 'lugares'], [trips.size, trips.size === 1 ? 'viagem' : 'viagens'], [Math.round(km).toLocaleString('pt-BR'), 'km de estrada']].map(([v, l]) => `<div><b>${v}</b><span>${l}</span></div>`).join('');
   $('yTrayN').textContent = LIB.inbox.length ? '· ' + LIB.inbox.length : '';
   $('yTrayRow').innerHTML = LIB.inbox.length ? LIB.inbox.map(m => phHtml('i|' + m.id, m)).join('') : '<span class="yempty">Nenhuma foto sem data. Fotos sem data de captura caem aqui ao adicionar.</span>';
+  const nd = LIB.moments.filter(m => !m.date).sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+  $('yNoDateN').textContent = nd.length ? '· ' + nd.length : ''; $('yNoDate').classList.toggle('none', !nd.length);
+  $('yNoDateList').innerHTML = nd.map(momCard).join('');
   const months = {}; dates.forEach(dt => { (months[dt.slice(5, 7)] = months[dt.slice(5, 7)] || []).push(dt); });
   let h = '';
   for (const mm of Object.keys(months).sort()) {
@@ -2445,7 +2489,7 @@ function renderYear() {
 function renderYTrash() {
   const xs = LIB.trash.filter(x => x.kind === 'photo' || x.kind === 'moment');
   $('yTrash').hidden = !xs.length;
-  $('yTrash').innerHTML = `<summary>Lixeira do ano (${xs.length})</summary><ul>${xs.map(x => `<li>${x.kind === 'photo' ? `<img data-mid="${esc(x.m.id)}" alt=""> Foto de ${esc(x.from)}` : `Momento "${esc(x.mo.title || 'Fotos do dia')}" (${fmtShort(toDate(x.mo.date))})`} · ${fmtWhen(x.at)} <button type="button" class="pill" data-restore="${x.id}">Restaurar</button><button type="button" class="pill" data-purge="${x.id}">Apagar de vez</button></li>`).join('')}</ul>`;
+  $('yTrash').innerHTML = `<summary>Lixeira do ano (${xs.length})</summary><ul>${xs.map(x => `<li>${x.kind === 'photo' ? `<img data-mid="${esc(x.m.id)}" alt=""> Foto de ${esc(x.from)}` : `Momento "${esc(x.mo.title || 'Fotos do dia')}" (${x.mo.date ? fmtShort(toDate(x.mo.date)) : 'sem data'})`} · ${fmtWhen(x.at)} <button type="button" class="pill" data-restore="${x.id}">Restaurar</button><button type="button" class="pill" data-purge="${x.id}">Apagar de vez</button></li>`).join('')}</ul>`;
 }
 $('ySelect').onchange = () => { LIB.year = +$('ySelect').value; save(); renderYear(); };
 $('shellAno').addEventListener('click', ev => {
@@ -2545,7 +2589,8 @@ function openMoment(id, date) {
   const mo = id ? LIB.moments.find(x => x.id === id) : null;
   momEdit.id = mo ? mo.id : null; momEdit.pending = []; momEdit.keep = mo ? mo.media.slice() : []; momEdit.out = [];
   $('momTitle').textContent = mo ? 'Editar momento' : 'Novo momento';
-  $('moDate').value = mo ? mo.date : (date || todayStr()); $('moTime').value = mo ? mo.time || '' : ''; $('moName').value = mo ? mo.title || '' : '';
+  const noDate = mo ? !mo.date : date === ''; $('moNoDate').checked = noDate; $('moDate').disabled = noDate; $('moDate').required = !noDate;
+  $('moDate').value = mo ? (mo.date || '') : (date || todayStr()); $('moTime').value = mo ? mo.time || '' : ''; $('moName').value = mo ? mo.title || '' : '';
   $('moPlace').value = mo && mo.place ? (mo.place.url || mo.place.label) : ''; $('moText').value = mo ? mo.text || '' : '';
   $('moDelete').hidden = !mo; $('moFiles').value = ''; $('moPickLabel').textContent = 'Adicionar fotos'; renderMoPhotos(); openSheet('sheetMoment');
 }
@@ -2564,14 +2609,17 @@ $('formMoment').onsubmit = async ev => {
     for (let i = 0; i < momEdit.pending.length; i++) { toast(`Guardando foto ${i + 1} de ${momEdit.pending.length}...`); const p = momEdit.pending[i]; let ex = null; try { ex = await readExif(p.file); } catch (e) {} const b = await shrinkImage(p.file); const id = 'p' + uid(); await putMedia(id, b); add.push({ id, kind: 'image', cap: '', ...(ex && ex.time ? { time: ex.time } : {}) }); URL.revokeObjectURL(p.url); }
     const place = parseLoc($('moPlace').value); const old = LIB.moments.find(x => x.id === momEdit.id);
     const old_place = old && old.place; if (place && old_place && (old_place.url || old_place.label) === $('moPlace').value.trim()) Object.assign(place, old_place);
-    const data = { date: $('moDate').value, time: $('moTime').value, title: $('moName').value.trim(), text: $('moText').value.trim(), place, auto: false };
+    if (!$('moNoDate').checked && !$('moDate').value) throw new Error('escolha a data ou marque "Sem data"');
+    const data = { date: $('moNoDate').checked ? '' : $('moDate').value, time: $('moTime').value, title: $('moName').value.trim(), text: $('moText').value.trim(), place, auto: false };
     if (old) { Object.assign(old, data); old.media = momEdit.keep.concat(add); }
     else LIB.moments.push({ id: 'mo' + uid(), ...data, media: add, createdAt: Date.now() });
     for (const m of momEdit.out) LIB.inbox.push({ ...m, addedAt: Date.now() });
-    LIB.year = +data.date.slice(0, 4); save(); closeSheet('sheetMoment'); renderYear(); toast(old ? 'Momento salvo' : 'Momento criado');
+    if (data.date) LIB.year = +data.date.slice(0, 4); save(); closeSheet('sheetMoment'); renderYear(); toast(old ? 'Momento salvo' : 'Momento criado');
   } catch (e) { toast('Não consegui salvar: ' + (e.message || e)); }
   btn.disabled = false;
 };
+$('moNoDate').onchange = () => { const on = $('moNoDate').checked; $('moDate').disabled = on; $('moDate').required = !on; if (!on && !$('moDate').value) $('moDate').value = todayStr(); };
+$('yAddNoDate').onclick = () => openMoment(null, '');
 $('yAddMoment').onclick = () => openMoment(null, LIB.year === new Date().getFullYear() ? todayStr() : `${LIB.year}-01-01`);
 
 /* ---------- adicionar fotos: organiza sozinho pela data e pelo GPS da foto ---------- */
@@ -3040,6 +3088,144 @@ function renderPlaylists() {
   $('plList').innerHTML = ps.length ? ps.map((p, i) => { const e = embedOf(p.url); if (!e) return ''; if (e.kind === 'suno') return sunoCard(p, i, e); return `<div class="plcard ${e.kind}"><div class="plt"><b>${esc(p.title || (e.kind === 'spotify' ? 'Spotify' : 'YouTube'))}</b><span class="tag">${e.kind === 'spotify' ? 'Spotify' : 'YouTube'}</span><a class="pill" href="${esc(p.url)}" target="_blank" rel="noopener">Abrir no app</a><span class="ed mv"><button type="button" class="pill" data-plup="${i}" aria-label="Subir">↑</button><button type="button" class="pill" data-pldn="${i}" aria-label="Descer">↓</button><button type="button" class="pill" data-pldel="${i}">Excluir</button></span></div>
     <iframe src="${esc(e.src)}" loading="lazy" class="${e.kind === 'youtube' ? 'yt' : e.tall ? 'sp' : 'sp1'}" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="${esc(p.title || 'Playlist')}"></iframe></div>`; }).join('') : `<div class="hint">${state.ro ? 'Nenhuma playlist por link.' : 'Nenhuma playlist por link ainda. Toque em "+ Link".'}</div>`;
 }
+/* ---------- Configurações do site: nomes, fontes e Google Drive (salvo em LIB.cfg, vai para a nuvem) ---------- */
+const CFG_TABS = [
+  { k: 'ano', tab: 'Nosso ano', title: 'Nosso ano', eye: 'Parte 1 · como foi o ano' },
+  { k: 'viagens', tab: 'Viagens', title: 'Nossas viagens', eye: 'Parte 2 · experiências' },
+  { k: 'albuns', tab: 'Álbuns', title: 'Nossos álbuns', eye: 'Parte 3 · álbuns' },
+  { k: 'musicas', tab: 'Músicas', title: 'Nossas músicas', eye: 'Trilha sonora' }];
+const FONTS_HEAD = [['Fraunces', 'Fraunces (padrão)'], ['Playfair Display', 'Playfair Display'], ['Lora', 'Lora'], ['Cormorant Garamond', 'Cormorant Garamond'], ['DM Serif Display', 'DM Serif Display'], ['Libre Baskerville', 'Libre Baskerville'], ['Merriweather', 'Merriweather'], ['Abril Fatface', 'Abril Fatface'], ['Montserrat', 'Montserrat'], ['Poppins', 'Poppins'], ['Bebas Neue', 'Bebas Neue'], ['Caveat', 'Caveat (manuscrita)'], ['Dancing Script', 'Dancing Script (manuscrita)'], ['Pacifico', 'Pacifico']];
+const FONTS_UI = [['Manrope', 'Manrope (padrão)'], ['Inter', 'Inter'], ['Poppins', 'Poppins'], ['Nunito', 'Nunito'], ['Lato', 'Lato'], ['Montserrat', 'Montserrat'], ['Open Sans', 'Open Sans'], ['Quicksand', 'Quicksand'], ['Raleway', 'Raleway'], ['Lora', 'Lora (serifa)'], ['Merriweather', 'Merriweather (serifa)']];
+const cfg = () => (LIB.cfg = LIB.cfg || {});
+const fontsLoaded = new Set(['Fraunces', 'Manrope', 'Caveat']);
+function loadFont(f) {
+  if (!f || fontsLoaded.has(f)) return; fontsLoaded.add(f);
+  const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(f).replace(/%20/g, '+')}:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap`;
+  l.onerror = () => { const k = document.createElement('link'); k.rel = 'stylesheet'; k.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(f).replace(/%20/g, '+')}&display=swap`; document.head.appendChild(k); };
+  document.head.appendChild(l);
+}
+const italLast = t => { t = String(t || '').trim(); const i = t.lastIndexOf(' '); return i < 0 ? `<i>${esc(t)}</i>` : `${esc(t.slice(0, i))} <i>${esc(t.slice(i + 1))}</i>`; };
+function applyCfg() {
+  const c = (LIB && LIB.cfg) || {}, T = c.tabs || {}, root = document.documentElement;
+  const brand = (c.brand || '').trim() || 'Nossas memórias';
+  $('cfgBrand').innerHTML = italLast(brand); document.title = brand;
+  for (const d of CFG_TABS) {
+    const t = T[d.k] || {}; const K = d.k[0].toUpperCase() + d.k.slice(1);
+    const b = document.querySelector(`#stabs [data-sv="${d.k}"]`); if (b) b.textContent = (t.tab || '').trim() || d.tab;
+    const h = $('ttl' + K); if (h) h.innerHTML = italLast((t.title || '').trim() || d.title);
+    const e = $('eye' + K); if (e) e.textContent = (t.eye != null && t.eye !== '') ? t.eye : d.eye;
+  }
+  if (c.fontHead && c.fontHead !== 'Fraunces') { loadFont(c.fontHead); root.style.setProperty('--head', `"${c.fontHead}","Fraunces",Georgia,serif`); } else root.style.removeProperty('--head');
+  if (c.fontUi && c.fontUi !== 'Manrope') { loadFont(c.fontUi); root.style.setProperty('--ui', `"${c.fontUi}","Manrope",Arial,sans-serif`); } else root.style.removeProperty('--ui');
+  root.classList.remove('fs-sm', 'fs-lg', 'fs-xl'); if (c.size) root.classList.add('fs-' + c.size);
+}
+function renderCfg() {
+  const c = cfg(), T = c.tabs || {};
+  $('cfBrand').value = c.brand || '';
+  $('cfTabs').innerHTML = CFG_TABS.map(d => { const t = T[d.k] || {}; return `<div class="cfgtab"><b>${esc(d.tab)}</b><div class="row">
+    <div class="field"><label for="cf_${d.k}_tab">Nome na barra</label><input type="text" id="cf_${d.k}_tab" data-cft="${d.k}" data-cff="tab" maxlength="24" placeholder="${esc(d.tab)}" value="${esc(t.tab || '')}"></div>
+    <div class="field"><label for="cf_${d.k}_title">Título da página</label><input type="text" id="cf_${d.k}_title" data-cft="${d.k}" data-cff="title" maxlength="40" placeholder="${esc(d.title)}" value="${esc(t.title || '')}"></div></div>
+    <div class="field"><label for="cf_${d.k}_eye">Texto pequeno acima do título</label><input type="text" id="cf_${d.k}_eye" data-cft="${d.k}" data-cff="eye" maxlength="50" placeholder="${esc(d.eye)}" value="${esc(t.eye || '')}"></div></div>`; }).join('');
+  $('cfFontHead').innerHTML = FONTS_HEAD.map(([v, n]) => `<option value="${esc(v)}" ${(c.fontHead || 'Fraunces') === v ? 'selected' : ''} style="font-family:'${esc(v)}'">${esc(n)}</option>`).join('');
+  $('cfFontUi').innerHTML = FONTS_UI.map(([v, n]) => `<option value="${esc(v)}" ${(c.fontUi || 'Manrope') === v ? 'selected' : ''}>${esc(n)}</option>`).join('');
+  $('cfSize').value = c.size || '';
+  $('cfGKey').value = c.gKey || ''; $('cfGClient').value = c.gClient || '';
+  $('cfPrev').querySelector('b').innerHTML = italLast((T.viagens && T.viagens.title) || 'Nossas viagens');
+}
+let cfgT = null; const cfgSave = () => { clearTimeout(cfgT); cfgT = setTimeout(() => save(), 500); };
+$('sheetStyle').addEventListener('input', ev => {
+  const el = ev.target; if (state.ro) return; const c = cfg();
+  if (el.id === 'cfBrand') c.brand = el.value;
+  else if (el.dataset.cft) { c.tabs = c.tabs || {}; const t = c.tabs[el.dataset.cft] = c.tabs[el.dataset.cft] || {}; t[el.dataset.cff] = el.value; if (el.dataset.cft === 'viagens' && el.dataset.cff === 'title') $('cfPrev').querySelector('b').innerHTML = italLast(el.value || 'Nossas viagens'); }
+  else if (el.id === 'cfFontHead') c.fontHead = el.value; else if (el.id === 'cfFontUi') c.fontUi = el.value; else if (el.id === 'cfSize') c.size = el.value;
+  else if (el.id === 'cfGKey') c.gKey = el.value.trim(); else if (el.id === 'cfGClient') c.gClient = el.value.trim();
+  else return;
+  applyCfg(); cfgSave();
+});
+$('cfReset').onclick = () => { if (!confirm('Voltar nomes e fontes ao padrão? (As chaves do Google Drive continuam.)')) return; const c = cfg(); delete c.brand; delete c.tabs; delete c.fontHead; delete c.fontUi; delete c.size; applyCfg(); renderCfg(); save(); toast('Nomes e fontes no padrão'); };
+
+/* ---------- Google Drive: escolher fotos direto do Drive (Google Picker) ---------- */
+const loadScript = src => new Promise((ok, no) => { if (document.querySelector(`script[src="${src}"]`)) return ok(); const s = document.createElement('script'); s.src = src; s.async = true; s.onload = ok; s.onerror = () => no(new Error('não carregou ' + src)); document.head.appendChild(s); });
+const GD = { token: '', exp: 0 };
+async function driveToken(clientId, wide) {
+  await loadScript('https://accounts.google.com/gsi/client');
+  if (GD.token && Date.now() < GD.exp && GD.client === clientId && (!wide || GD.wide)) return GD.token;
+  return new Promise((ok, no) => {
+    const tc = google.accounts.oauth2.initTokenClient({ client_id: clientId, scope: wide ? 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.readonly' : 'https://www.googleapis.com/auth/drive.file', callback: r => { if (r && r.access_token) { GD.wide = !!wide; GD.token = r.access_token; GD.exp = Date.now() + ((+r.expires_in || 3600) - 60) * 1000; GD.client = clientId; ok(r.access_token); } else no(new Error((r && r.error) || 'sem permissão')); }, error_callback: e => no(new Error((e && (e.message || e.type)) || 'janela fechada')) });
+    tc.requestAccessToken({ prompt: (GD.token && (!wide || GD.wide)) ? '' : 'consent' });
+  });
+}
+function driveReady() {
+  const c = cfg(); if (c.gKey && c.gClient) return c;
+  toast('Configure o Google Drive primeiro (engrenagem > Google Drive)');
+  document.querySelectorAll('.sheet:not([hidden])').forEach(x => { try { closeSheet(x.id); } catch (e) {} });
+  $('btnColors').click(); setTimeout(() => { const el = $('cfGKey'); if (el) el.scrollIntoView({ block: 'center' }); }, 400); return null;
+}
+async function driveDownload(id, token, name, mime, when) {
+  const r = await fetch(`https://www.googleapis.com/drive/v3/files/${id}?alt=media&supportsAllDrives=true`, { headers: { Authorization: 'Bearer ' + token } });
+  if (!r.ok) throw new Error('Drive ' + r.status); const bl = await r.blob();
+  return new File([bl], name || id, { type: bl.type || mime || 'image/jpeg', lastModified: +when || Date.now() });
+}
+/* abre o seletor do Google Drive e devolve os arquivos escolhidos (fotos e, se pedir, vídeos) */
+async function pickFromDrive(opts) {
+  opts = opts || {}; const c = driveReady(); if (!c) return [];
+  let token; try { toast('Abrindo o Google Drive...'); token = await driveToken(c.gClient); } catch (e) { toast('Não consegui entrar no Google: ' + e.message); return []; }
+  try { await loadScript('https://apis.google.com/js/api.js'); await new Promise(r => gapi.load('picker', r)); } catch (e) { toast('Não consegui abrir o seletor do Drive'); return []; }
+  const P = google.picker, appId = (c.gClient.match(/^(\d+)-/) || [])[1] || '';
+  const mimes = opts.videos ? 'image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif,video/mp4,video/quicktime,video/webm' : 'image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif';
+  const vAll = new P.DocsView(P.ViewId.DOCS).setMimeTypes(mimes).setIncludeFolders(true).setSelectFolderEnabled(false).setMode(P.DocsViewMode.GRID);
+  const vPhotos = new P.DocsView(opts.videos ? P.ViewId.DOCS_IMAGES_AND_VIDEOS : P.ViewId.DOCS_IMAGES).setMode(P.DocsViewMode.GRID);
+  return new Promise(done => {
+    const b = new P.PickerBuilder().addView(vAll).addView(vPhotos).enableFeature(P.Feature.MULTISELECT_ENABLED).setOAuthToken(token).setDeveloperKey(c.gKey).setLocale('pt-BR').setTitle(opts.title || 'Escolha as fotos (pode marcar várias)').setMaxItems(500)
+      .setCallback(async d => {
+        const act = d[P.Response.ACTION]; if (act === P.Action.CANCEL) return done([]); if (act !== P.Action.PICKED) return;
+        const docs = d[P.Response.DOCUMENTS] || [], files = []; let fail = 0;
+        for (let i = 0; i < docs.length; i++) { const x = docs[i]; toast(`Baixando do Drive ${i + 1} de ${docs.length}...`); try { files.push(await driveDownload(x[P.Document.ID], token, x[P.Document.NAME], x[P.Document.MIME_TYPE], x[P.Document.LAST_EDITED_UTC])); } catch (e) { fail++; } }
+        if (fail) toast(`${fail} arquivo(s) não baixaram do Drive`); done(files);
+      });
+    if (appId) b.setAppId(appId);
+    if (location.protocol.startsWith('http')) b.setOrigin(location.protocol + '//' + location.host);
+    b.build().setVisible(true);
+  });
+}
+const asPending = f => ({ file: f, kind: f.type.startsWith('video/') ? 'video' : 'image', url: URL.createObjectURL(f) });
+$('yAddDrive').onclick = async () => { const files = await pickFromDrive(); if (files.length) await importPhotos(files); };
+$('dDriveBtn').onclick = async () => { const files = (await pickFromDrive({ title: 'Fotos do dia' })).filter(f => !f.type.startsWith('video/')); files.forEach(f => state.dPending.push(asPending(f))); if (files.length) { renderDayPreviews(); toast(`${files.length} foto(s) do Drive. Toque em Salvar.`); } };
+$('fDriveBtn').onclick = async () => { const files = await pickFromDrive({ videos: true, title: 'Fotos e vídeos da programação' }); files.forEach(f => state.pending.push(asPending(f))); if (files.length) { renderPreviews(); toast(`${files.length} arquivo(s) do Drive. Toque em Salvar.`); } };
+
+/* ---------- arrastar e soltar: fotos do computador ou do Google Drive direto num dia ---------- */
+const DND = { n: 0, el: null };
+function dropTarget(ev) {
+  if (state.ro) return null; const t = ev.target;
+  if (!$('tripApp').hidden) { const sec = t.closest && t.closest('section.day'); if (sec && findDay(sec.id)) return sec; return null; }
+  if (!$('shellAno').hidden) return $('shellAno');
+  return null;
+}
+const hasDrop = ev => { const ty = [...((ev.dataTransfer && ev.dataTransfer.types) || [])]; return ty.includes('Files') || ty.includes('text/uri-list') || ty.includes('text/plain'); };
+function dropMark(el) { if (DND.el === el) return; if (DND.el) DND.el.classList.remove('dropon'); DND.el = el; let m = document.querySelector('.dropmsg'); if (el) { el.classList.add('dropon'); if (!m) { m = document.createElement('div'); m.className = 'dropmsg'; document.body.appendChild(m); } m.hidden = false; m.textContent = el.id === 'shellAno' ? 'Solte para adicionar as fotos (organiza pela data)' : 'Solte para colocar as fotos neste dia'; } else if (m) m.hidden = true; }
+document.addEventListener('dragover', ev => { if (!hasDrop(ev) || ev.target.closest('.sheet')) return; const el = dropTarget(ev); if (!el) { dropMark(null); return; } if ([...ev.dataTransfer.types].includes('Files') || [...ev.dataTransfer.types].includes('text/uri-list')) { ev.preventDefault(); ev.dataTransfer.dropEffect = 'copy'; dropMark(el); } });
+document.addEventListener('dragleave', ev => { if (!ev.relatedTarget) dropMark(null); });
+document.addEventListener('drop', async ev => {
+  const el = DND.el; dropMark(null); if (!el || ev.target.closest('.sheet')) return; ev.preventDefault();
+  let files = [...(ev.dataTransfer.files || [])].filter(f => /^(image|video)\//.test(f.type) || /\.(jpe?g|png|webp|gif|heic|heif|mp4|mov)$/i.test(f.name));
+  if (!files.length) { /* arrastou do site do Google Drive: chega só o link do arquivo */
+    const txt = (ev.dataTransfer.getData('text/uri-list') || ev.dataTransfer.getData('text/plain') || '');
+    const ids = [...new Set([...txt.matchAll(/(?:\/d\/|[?&]id=|\/file\/d\/)([A-Za-z0-9_-]{20,})/g)].map(m => m[1]))];
+    if (!ids.length) { toast('Não reconheci o que foi solto. Use fotos ou vídeos.'); return; }
+    const c = driveReady(); if (!c) return;
+    let token; try { token = await driveToken(c.gClient, true); } catch (e) { toast('Não consegui entrar no Google: ' + e.message); return; }
+    let fail = 0; for (let i = 0; i < ids.length; i++) { toast(`Baixando do Drive ${i + 1} de ${ids.length}...`); try { files.push(await driveDownload(ids[i], token, 'drive-' + ids[i])); } catch (e) { fail++; } }
+    if (fail) toast(`${fail} arquivo(s) não baixaram. Use o botão "Escolher do Google Drive".`);
+  }
+  if (!files.length) return;
+  if (el.id === 'shellAno') { await importPhotos(files.filter(f => !f.type.startsWith('video/'))); return; }
+  const d = findDay(el.id); if (!d) return;
+  try { const media = await storeFiles(files.map(asPending), m => { if (m) toast(m); }); d.media = (d.media || []).concat(media); save(); await renderAll(); toast(`${media.length} arquivo(s) no dia ${pad(dayIndex(d))}`); const sec = $(d.id); if (sec) sec.scrollIntoView({ block: 'start' }); }
+  catch (e) { toast(e.message || 'Não consegui guardar'); }
+});
+/* arrastar para dentro das áreas "Escolher fotos" dos painéis */
+['dFiles', 'fFiles'].forEach(id => { const inp = $(id), box = inp.closest('.filepick'); ['dragenter', 'dragover'].forEach(e => box.addEventListener(e, () => box.classList.add('dropon'))); ['dragleave', 'drop'].forEach(e => box.addEventListener(e, () => box.classList.remove('dropon'))); });
+
 /* ---------- Suno: lista de músicas com o player do próprio Suno ---------- */
 const sunoName = p => p.title || (embedOf(p.url) || {}).type === 'song' && (p.tracks && p.tracks[0] && p.tracks[0].title) || 'Playlist do Suno';
 const mmssS = d => { d = Math.round(+d || 0); return d ? `${Math.floor(d / 60)}:${String(d % 60).padStart(2, '0')}` : ''; };
